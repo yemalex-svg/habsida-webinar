@@ -1,0 +1,195 @@
+/* Habsida · Black Friday webinar · static version. Everything is scoped under .hb so Tilda's own styles are left alone. */
+@font-face{font-family:"Inter Tight";font-style:normal;font-weight:100 900;font-display:swap;src:url(../assets/fonts/inter-tight-cyrillic.woff2) format("woff2");unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+@font-face{font-family:"Inter Tight";font-style:normal;font-weight:100 900;font-display:swap;src:url(../assets/fonts/inter-tight-latin.woff2) format("woff2")}
+html{color-scheme:dark}
+body,#allrecords{background-color:#060505!important}
+/* black page with a trace of red in the black and in the greys, warm white text, one accent: the sale red on the buttons */
+.hb{--paper:#060505;--ink:#F7F3F0;--red:#F0261B;--mute:#A69B97;--line:rgba(247,243,240,.13);--surface:#191414;--surface-2:#2A1917;--link:#FF7A6C;
+  --font:"Inter Tight","Inter",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --gut-l:max(16px,env(safe-area-inset-left,0px));--gut-r:max(16px,env(safe-area-inset-right,0px));
+  position:relative;overflow-x:clip;text-align:left;background:var(--paper);color:var(--ink);font-family:var(--font);font-size:16px;line-height:1.45;-webkit-font-smoothing:antialiased}
+.hb *,.hb ::before,.hb ::after{box-sizing:border-box}
+.hb h1,.hb h2,.hb h3,.hb p,.hb ul,.hb li,.hb dl,.hb dt,.hb dd{margin:0;padding:0}
+.hb ul{list-style:none}
+.hb img{display:block;max-width:100%;height:auto}
+.hb a{text-decoration:none}
+.hb .wrap{max-width:480px;margin-inline:auto;padding-left:var(--gut-l);padding-right:var(--gut-r);box-sizing:content-box}
+.hb .nw{white-space:nowrap}
+.hb .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+
+/* header: the logo on its own dark plate, fixed; on computers a quiet registration button on the right */
+.hb .nav{position:fixed;left:0;right:0;top:0;z-index:5;padding:calc(env(safe-area-inset-top,0px) + 10px) 0 6px;pointer-events:none}
+.hb .nav .wrap{display:flex;justify-content:center}
+.hb .nav__brand{display:block;pointer-events:auto;padding:8px 14px;border-radius:14px;background:rgba(22,18,18,.8);-webkit-backdrop-filter:blur(14px) saturate(1.4);backdrop-filter:blur(14px) saturate(1.4);
+  box-shadow:0 0 0 1px rgba(247,243,240,.08),0 8px 22px -14px rgba(0,0,0,.7)}
+.hb .nav__brand img{height:26px;width:auto;filter:brightness(0) invert(1)}
+.hb .nav__brand:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+.hb .nav .nav__cta{display:none}
+
+/* the one primary action */
+.hb .btn{appearance:none;border:0;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;height:54px;padding:0 28px;border-radius:999px;color:#fff;white-space:nowrap;
+  font:600 16px/1 var(--font);letter-spacing:-.005em;background:linear-gradient(180deg,#FF4B3D 0%,#EE2318 55%,#D01A10 100%);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.42),inset 0 -2px 6px rgba(90,6,0,.32),0 8px 18px -10px rgba(0,0,0,.7);transition:transform .18s ease;-webkit-tap-highlight-color:transparent}
+.hb .btn:active{transform:scale(.97)}
+.hb .btn:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+.hb .h2{font-size:clamp(27px,8vw,38px);line-height:1.04;letter-spacing:-.02em;font-weight:650;text-wrap:balance}
+
+/* first screen: the cloud of glass bubbles edge to edge, then the sticker, the question, the date and the button */
+.hb .hero{padding:calc(env(safe-area-inset-top,0px) + 54px) 0 30px}
+.hb .hero__cloud{display:block}
+.hb .hero__cloud img{width:100%}
+.hb .intro{display:flex;flex-direction:column;align-items:center;text-align:center;margin-top:4px}
+.hb .stk{position:relative;display:inline-block;margin:0 0 14px;transform:rotate(-4deg);font-size:clamp(17px,4.9vw,21px);line-height:1;font-weight:600;letter-spacing:-.005em;color:#fff;white-space:nowrap;filter:drop-shadow(0 6px 10px rgba(0,0,0,.5))}
+.hb .stk__in{display:block;padding:.52em 1.9em .58em 1.05em;border-radius:999px 0 0 999px;background:linear-gradient(100deg,#3D3735 0%,#292524 100%);clip-path:polygon(0 0,calc(100% - 1.45em) 0,100% 100%,0 100%)}
+.hb .stk__flap{position:absolute;right:0;top:-.1em;width:1.45em;height:calc(100% + .1em);background:linear-gradient(205deg,#C9C0BC 0%,#8A817E 100%);clip-path:polygon(0 6%,26% 2%,46% 0,58% 1%,66% 6%,100% 100%)}
+.hb h1{font-size:clamp(23px,6.9vw,31px);line-height:1.1;letter-spacing:-.02em;font-weight:600;color:var(--ink)}
+.hb .meta{margin-top:16px;display:flex;flex-direction:column;align-items:center;gap:7px}
+.hb .meta__kind{font-size:14px;line-height:1.3;color:var(--mute)}
+.hb .meta__row{display:flex;align-items:center;font-size:17px;line-height:1;font-weight:560;letter-spacing:-.01em;font-variant-numeric:tabular-nums;white-space:nowrap}
+.hb .meta__row span{position:relative;padding:3px 13px}
+.hb .meta__row span + span::before{content:"";position:absolute;left:0;top:50%;width:1px;height:15px;margin-top:-7.5px;background:rgba(247,243,240,.24)}
+.hb .hero .btn{margin-top:22px}
+@media (max-width:360px){.hb .meta__row{font-size:15.5px}.hb .meta__row span{padding:3px 10px}}
+/* short phones: the cloud gives up its top row so the button stays on the first screen */
+@media (max-height:700px) and (max-width:699px){.hb .hero__cloud img{height:36vh;object-fit:cover;object-position:50% 100%}}
+
+/* what the webinar is about: a short chat, one message from each speaker with his head as the avatar */
+.hb .topics{padding:14px 0 60px}
+.hb .cast{display:flex;flex-direction:column;gap:10px}
+.hb .chat__date{align-self:center;margin-bottom:2px;padding:5px 12px;border-radius:999px;background:var(--surface);font-size:12.5px;line-height:1.2;color:var(--mute)}
+.hb .msg{display:flex;align-items:flex-end;gap:10px}
+.hb .msg--r{flex-direction:row-reverse}
+.hb .msg__head{flex:none;width:min(17vw,68px);aspect-ratio:1}
+.hb .msg--l .msg__head{transform:rotate(-7deg)}
+.hb .msg--r .msg__head{transform:rotate(7deg)}
+.hb .msg__body{max-width:86%;padding:9px 14px 10px;border-radius:20px 20px 20px 6px;background:var(--surface);font-size:clamp(16px,4.5vw,18px);line-height:1.3;font-weight:500;letter-spacing:-.005em;text-wrap:pretty}
+.hb .msg--r .msg__body{border-radius:20px 20px 6px 20px;background:var(--surface-2)}
+.hb .msg__who{display:block;margin-bottom:3px;font-size:12.5px;line-height:1.2;font-weight:640;color:var(--link)}
+.hb .msg__time{float:right;margin:10px 0 0 10px;font-size:11.5px;line-height:1;color:var(--mute);font-variant-numeric:tabular-nums}
+.hb .topics__bubble{display:none}
+
+/* the giveaway: heading, the laptop in its glass rosette, its name, the button */
+.hb .gift{padding:52px 0 60px}
+.hb .gift .wrap{display:flex;flex-direction:column;align-items:center;text-align:center}
+.hb .gift__title{max-width:12em}
+.hb .gift__pic{width:min(66vw,270px);margin:8px 0 4px}
+.hb .gift__name{max-width:17em;font-size:clamp(18px,5vw,21px);line-height:1.28;font-weight:520;letter-spacing:-.008em;text-wrap:balance}
+.hb .gift .btn{margin-top:22px}
+
+/* who it is for: the heading, then five statements as a plain list, each with its object */
+.hb .fit{padding:52px 0 64px}
+.hb .fit__list{margin-top:22px;border-top:1px solid var(--line)}
+.hb .fit__list li{display:grid;grid-template-columns:52px minmax(0,1fr);column-gap:14px;align-items:center;padding:13px 0;border-bottom:1px solid var(--line);
+  font-size:clamp(18px,5vw,20px);line-height:1.22;letter-spacing:-.012em;font-weight:600;text-wrap:pretty}
+.hb .fit__list img{width:52px;height:52px}
+
+/* speakers: the head in a glass pebble with the logos of where he studied and worked around it, then the name, the role, the facts */
+.hb .speakers{padding:60px 0 56px}
+.hb .speakers .wrap{display:flex;flex-direction:column;align-items:center;text-align:center;gap:40px}
+.hb .spk{display:flex;flex-direction:column;align-items:center;width:100%}
+/* both pictures are drawn at one scale (--w is the picture's own width at 3x), so the two heads come out the same size */
+.hb .spk__pic{flex:none;max-width:none;width:min(calc(var(--w) * 1px / 3),calc((100vw - 16px) * var(--w) / 1064));margin:4px 0 18px}
+.hb .spk h3{font-size:clamp(24px,6.8vw,28px);line-height:1.1;letter-spacing:-.018em;font-weight:640}
+.hb .spk__role{margin-top:8px;max-width:19em;font-size:16px;line-height:1.35;color:var(--mute);text-wrap:balance}
+.hb .spk__facts{position:relative;margin-top:16px;padding-top:18px;display:flex;flex-direction:column;gap:8px;max-width:22em}
+.hb .spk__facts::before{content:"";position:absolute;left:50%;top:0;width:28px;height:2px;margin-left:-14px;border-radius:1px;background:var(--red)}
+.hb .spk__facts li{font-size:15.5px;line-height:1.35;text-wrap:balance}
+
+/* about: a dark card lit red along its edge; the text, the numbers, then the group photo rising out of the dark */
+.hb .about{padding:8px 0 0}
+.hb .about__card{position:relative;margin-inline:12px;border-radius:28px;overflow:hidden;
+  background:radial-gradient(120% 46% at 50% 104%,#571711 0%,rgba(87,23,17,0) 70%),linear-gradient(180deg,#0A0707 0%,#130C0B 55%,#1B0F0D 100%)}
+.hb .about__card::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;
+  box-shadow:inset 0 0 0 2px rgba(255,205,196,.75),inset 0 0 24px 5px rgba(255,72,52,.95),inset 0 0 80px 16px rgba(240,50,32,.42)}
+.hb .about__body{padding:44px 22px 0}
+.hb .about__body .h2{margin-bottom:18px}
+.hb .about__text{margin-bottom:.7em;font-size:clamp(22px,6.1vw,26px);line-height:1.2;letter-spacing:-.016em;font-weight:560;text-wrap:pretty}
+.hb .stats{margin-top:28px;border-top:1px solid rgba(247,243,240,.14)}
+.hb .stats > div{display:grid;grid-template-columns:minmax(104px,auto) minmax(0,1fr);column-gap:18px;align-items:center;border-bottom:1px solid rgba(247,243,240,.14)}
+.hb .stats dt,.hb .stats dd{padding:14px 0}
+.hb .stats dt{font-size:clamp(34px,9.5vw,42px);line-height:1;letter-spacing:-.035em;font-weight:500;font-variant-numeric:tabular-nums;white-space:nowrap;display:flex;align-items:baseline;gap:6px}
+.hb .stats dt small{font-size:13px;letter-spacing:0;font-weight:500;color:#B9AAA5}
+.hb .stats dd{font-size:15.5px;line-height:1.3;color:#B9AAA5;text-wrap:pretty}
+.hb .about__photo{width:100%;height:clamp(230px,64vw,330px);object-fit:cover;margin-top:14px;
+  -webkit-mask-image:linear-gradient(180deg,transparent 0,#000 34%);mask-image:linear-gradient(180deg,transparent 0,#000 34%)}
+
+/* tablets and computers: the band of bubbles under the question instead of the phone's cloud */
+@media (min-width:700px){
+  .hb .hero{padding-top:calc(env(safe-area-inset-top,0px) + 96px);padding-bottom:40px;display:flex;flex-direction:column}
+  .hb .hero__cloud{order:2;width:min(100% - 32px,1180px);margin:34px auto 0}
+  .hb .intro{order:1;margin-top:0;max-width:880px}
+}
+/* a phone on its side: little height, so the question takes two lines and sits closer to the header */
+@media (min-width:700px) and (max-height:520px){
+  .hb .hero{padding-top:calc(env(safe-area-inset-top,0px) + 66px)}
+  .hb .stk{font-size:16px;margin-bottom:8px}
+  .hb h1 br.m{display:none}
+  .hb .hero .btn{margin-top:16px}
+}
+/* computers (and tablets on their side): two columns, 1280 px wide at most */
+@media (min-width:1024px){
+  .hb{--gut-l:max(40px,env(safe-area-inset-left,0px));--gut-r:max(40px,env(safe-area-inset-right,0px))}
+  .hb .wrap{max-width:1200px}
+  .hb .nav{padding-top:calc(env(safe-area-inset-top,0px) + 14px);padding-bottom:8px}
+  .hb .nav .wrap{max-width:1280px;justify-content:space-between;align-items:center}
+  .hb .nav__brand{padding:10px 18px;border-radius:16px}
+  .hb .nav__brand img{height:28px}
+  .hb .nav .nav__cta{display:inline-flex;pointer-events:auto;height:48px;padding:0 22px;font-size:15px;color:#FFDAD5;background:rgba(240,38,27,.2);box-shadow:none}
+  .hb .btn{height:60px;padding:0 34px;font-size:18px}
+  .hb .h2{font-size:clamp(40px,3.6vw,56px);letter-spacing:-.025em}
+  .hb .hero{padding-top:calc(env(safe-area-inset-top,0px) + 120px);padding-bottom:64px}
+  .hb .stk{font-size:26px;margin-bottom:22px}
+  .hb h1{font-size:clamp(40px,3.9vw,58px);line-height:1.04;letter-spacing:-.025em}
+  .hb h1 br.m{display:none}
+  .hb .meta{margin-top:24px;gap:9px}
+  .hb .meta__kind{font-size:16px}
+  .hb .meta__row{font-size:20px}
+  .hb .meta__row span{padding:3px 16px}
+  .hb .hero .btn{margin-top:32px}
+  .hb .hero__cloud{margin-top:44px}
+  .hb .topics{padding:72px 0 120px}
+  .hb .topics .wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,440px);column-gap:8%;align-items:center}
+  .hb .topics__bubble{display:block;width:100%}
+  .hb .cast{gap:16px}
+  .hb .chat__date{font-size:14px}
+  .hb .msg{gap:14px}
+  .hb .msg__head{width:112px}
+  .hb .msg__body{font-size:20px;padding:12px 18px 13px}
+  .hb .msg__who{font-size:15px}
+  .hb .gift{padding:96px 0 120px}
+  .hb .gift .wrap{display:grid;grid-template-columns:auto minmax(0,520px);grid-template-rows:auto auto auto;column-gap:72px;justify-content:center;align-content:center;align-items:center;text-align:left}
+  .hb .gift__pic{grid-column:1;grid-row:1 / span 3;width:min(28vw,360px);margin:0}
+  .hb .gift__title,.hb .gift__name,.hb .gift .btn{grid-column:2;justify-self:start}
+  .hb .gift__name{margin-top:14px;font-size:24px;max-width:19em;text-wrap:pretty}
+  .hb .gift .btn{margin-top:26px}
+  .hb .fit{padding:96px 0 120px}
+  .hb .fit .wrap{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);column-gap:8%;align-items:start}
+  .hb .fit__list{margin-top:8px}
+  .hb .fit__list li{grid-template-columns:72px minmax(0,1fr);column-gap:22px;padding:18px 0;font-size:clamp(22px,1.9vw,27px);line-height:1.2}
+  .hb .fit__list img{width:72px;height:72px}
+  .hb .speakers{padding:104px 0 112px}
+  .hb .speakers .wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:8%;row-gap:20px;align-items:start}
+  .hb .speakers .h2{grid-column:1 / -1;justify-self:center}
+  /* side by side: the shorter picture gets the difference as margins, so the two names sit on one line */
+  .hb .spk__pic{width:calc(var(--w) * 1.2px / 3);margin:calc(14px + (695 - var(--h)) * .2px) 0 calc(26px + (695 - var(--h)) * .2px)}
+  .hb .spk h3{font-size:32px}
+  .hb .spk__role{font-size:18px}
+  .hb .spk__facts{max-width:26em}
+  .hb .spk__facts li{font-size:17px}
+  .hb .about__card{margin-inline:max(24px,calc((100% - 1360px) / 2))}
+  .hb .about__body{padding:88px clamp(40px,6vw,96px) 0;display:grid;grid-template-columns:minmax(0,7fr) minmax(0,4fr);column-gap:8%;align-items:start}
+  .hb .about__body .h2{grid-column:1 / -1;margin-bottom:28px}
+  .hb .about__text{font-size:clamp(28px,2.4vw,38px)}
+  .hb .about__lead{grid-column:1}
+  .hb .stats{grid-column:2;margin-top:8px}
+  .hb .stats > div{grid-template-columns:minmax(120px,auto) minmax(0,1fr)}
+  .hb .stats dt{font-size:clamp(40px,3.2vw,52px)}
+  .hb .stats dd{font-size:17px}
+  .hb .about__photo{height:auto;max-height:560px;margin-top:8px}
+}
+/* a mouse: the things you can click answer the pointer */
+@media (hover:hover) and (pointer:fine){
+  .hb .btn{transition:transform .18s ease,filter .18s ease}
+  .hb .btn:hover{filter:brightness(1.08) saturate(1.05)}
+  .hb .nav .nav__cta:hover{filter:none;background:rgba(240,38,27,.3)}
+}
