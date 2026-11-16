@@ -49,6 +49,9 @@ body,#allrecords{background-color:#060505!important}
 .hb .meta__row span{position:relative;padding:3px 13px}
 .hb .meta__row span + span::before{content:"";position:absolute;left:0;top:50%;width:1px;height:15px;margin-top:-7.5px;background:rgba(247,243,240,.24)}
 .hb .hero .btn{margin-top:22px}
+/* the giveaway in one line under the button, with the laptop itself next to it */
+.hb .hero__gift{margin-top:18px;display:flex;align-items:center;gap:10px;max-width:21.5em;text-align:left;font-size:15px;line-height:1.32;font-weight:500;letter-spacing:-.005em;text-wrap:pretty}
+.hb .hero__gift img{flex:none;width:46px;height:46px;transform:rotate(-6deg)}
 @media (max-width:360px){.hb .meta__row{font-size:15.5px}.hb .meta__row span{padding:3px 10px}}
 /* short phones: the cloud gives up its top row so the button stays on the first screen */
 @media (max-height:700px) and (max-width:699px){.hb .hero__cloud img{height:36vh;object-fit:cover;object-position:50% 100%}}
@@ -125,6 +128,7 @@ body,#allrecords{background-color:#060505!important}
   .hb .stk{font-size:16px;margin-bottom:8px}
   .hb h1 br.m{display:none}
   .hb .hero .btn{margin-top:16px}
+  .hb .hero__gift{margin-top:12px}
 }
 /* computers (and tablets on their side): two columns, 1280 px wide at most */
 @media (min-width:1024px){
@@ -146,6 +150,8 @@ body,#allrecords{background-color:#060505!important}
   .hb .meta__row{font-size:20px}
   .hb .meta__row span{padding:3px 16px}
   .hb .hero .btn{margin-top:32px}
+  .hb .hero__gift{margin-top:22px;gap:14px;max-width:none;font-size:18px}
+  .hb .hero__gift img{width:58px;height:58px}
   .hb .hero__cloud{margin-top:44px}
   .hb .topics{padding:72px 0 120px}
   .hb .topics .wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,440px);column-gap:8%;align-items:center}
